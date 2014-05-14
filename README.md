@@ -1,7 +1,7 @@
 gitlab-webhook-youtrack-js
 ==========================
 
-A webhook to change the state of your issues on Youtrack based on commits and branche names in merge requests
+A [Gitlab](https://www.gitlab.com/) webhook to change the state of your issues on [Jetbrains Youtrack](http://www.jetbrains.com/youtrack/) based on commits and branch names in merge requests.
 
 ### Installing
 
@@ -52,7 +52,7 @@ rules: [
 
 The `begin` is the initial state that the issue must be and the `final` is the state that will be changed to.
 
-### How this detects the issue number?
+#### How this detects the issue number?
 
 You can specify in the `routes/index.js` at `searchOn` attribute wheres the webhook will search your issue numbers. The webhook can search in merged branche names or in commit messages.
 
