@@ -145,7 +145,37 @@ var YoutrackGitlab = function (config) {
 	 * Find issue references on commits
 	 * @param commits
 	 */
-	function trackCommit(commits) {
+	function trackCommit(commits) {		
+
+		var tasks = [];
+
+		for (var i in commits) {
+
+			var commit = commits[i].message;
+			var task_id = false;
+
+			// Check if the commits it's a branch merge
+			if (commit.match(/( |^)#?(\w+-\d+)/)) {
+
+				task_id = commit.match(/( |^)#?(\w+-\d+)/);
+
+				tasks.push(task_id);
+
+			}
+
+		}
+
+		if (tasks.length > 0) {
+
+			login(function () {
+
+				for (var i in tasks) {
+					checkStatus(tasks[i]);
+				}
+
+			});
+
+		}
 
 	}
 
